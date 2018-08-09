@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Seat = ({ number, price, status }) => (
     <li className={'seatobj ' + status} key={number.toString()}>
-    	<input type="checkbox" disabled={status === 'booked' ? true : false} id={number.toString()} onClick={handleClick}/>
+    	<input type="checkbox" disabled={status === 'booked' ? true : false} id={number.toString()} onClick={handleClick} />
 			<label htmlFor={number.toString()}>
 				{number}
 			</label>
