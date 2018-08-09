@@ -12,7 +12,7 @@ const SeatList = ({ title, children }) => (
 
 SeatList.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string.isReuqired
+  title: PropTypes.string.isRequired
 }
 
 export default SeatList;
