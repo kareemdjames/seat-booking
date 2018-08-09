@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import SeatList from './components/SeatList';
+import Cart from './components/Cart';
+import { getSeats } from './api/service';
+import SeatRow from './components/SeatRow';
 import './App.css';
 
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      seatrows: [],
+    }
+  }
+
+  componentDidMount() {
+    let _this = this;
+    getSeats().then(function(list) {
+      console.log(list);
+      _this.setState({
+        seatrows: list,
+      });
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="layout">
+        <SeatList title="Seats">
+          {this.state.seatrows.map((row, index) => 
+            <SeatRow seats={row.seats} key={index} />
+          )}
+        </SeatList>
+        <hr />
+        <Cart />
       </div>
     );
   }
